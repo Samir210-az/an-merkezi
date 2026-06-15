@@ -1,0 +1,22 @@
+{
+  "name": "AN Mərkəzi",
+  "short_name": "AN",
+  "description": "AN Mərkəzi tətbiqi",
+  "start_url": "/an-merkezi/",
+  "display": "standalone",
+  "background_color": "#1a3a6b",
+  "theme_color": "#1a3a6b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://samir210-az.github.io/an-merkezi/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://samir210-az.github.io/an-merkezi/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
