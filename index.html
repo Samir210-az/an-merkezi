@@ -338,6 +338,15 @@ footer a:hover{text-decoration:underline}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
 .reveal.visible{opacity:1;transform:translateY(0)}
 </style>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a3a6b">
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/an-merkezi/service-worker.js');
+        });
+      }
+    </script>
 </head>
 <body>
 
