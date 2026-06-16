@@ -337,6 +337,225 @@ footer a:hover{text-decoration:underline}
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
 .reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ═══════════════════════════════════════════════
+   UI UX PRO MAX — Glassmorphism & Parallax Layer
+   an-merkezi · yalnız vizual, struktur toxunulmaz
+═══════════════════════════════════════════════ */
+:root{
+  --glass-bg:rgba(255,251,248,0.55);
+  --glass-border:rgba(210,165,93,0.22);
+  --glass-blur:blur(22px) saturate(1.7);
+  --neon-gold:0 0 28px rgba(210,165,93,0.32),0 0 8px rgba(210,165,93,0.18);
+  --depth:0 20px 60px rgba(58,0,0,0.16),0 4px 16px rgba(106,0,0,0.10);
+}
+
+/* ── HEADER GLASS ── */
+header{
+  background:rgba(255,251,248,0.72) !important;
+  backdrop-filter:blur(28px) saturate(1.8) !important;
+  -webkit-backdrop-filter:blur(28px) saturate(1.8) !important;
+  border-bottom:1.5px solid rgba(210,165,93,0.2) !important;
+  box-shadow:0 4px 32px rgba(106,0,0,0.08),0 1px 0 rgba(255,255,255,0.9) inset !important;
+  transition:box-shadow .3s,background .3s !important;
+}
+
+/* ── HERO PARALLAX BG ── */
+.hero{
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:-20%;
+  background:inherit;
+  will-change:transform;
+  z-index:0;
+  pointer-events:none;
+}
+.hero > *{position:relative;z-index:1;}
+
+/* Hero orb dekorlar */
+.hero::after{
+  content:'';
+  position:absolute;
+  width:600px;height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(210,165,93,0.12) 0%,transparent 70%);
+  top:-150px;right:-150px;
+  pointer-events:none;
+  z-index:0;
+  animation:orbFloat 8s ease-in-out infinite;
+}
+@keyframes orbFloat{
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(30px) scale(1.05);}
+}
+
+/* ── PARALLAX BAND ── */
+.parallax-band{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+.parallax-band > *{position:relative;z-index:1;}
+
+/* ── GLASS CARDS — ümumi ── */
+.card,
+.model-card,
+.step,
+.kit-box,
+.stat-card,
+.service-card,
+.faq-item,
+.contact-card,
+.reg-card,
+.msg-card,
+.program-card,
+.feature-card,
+.team-card,
+.result-card,
+.info-card{
+  background:rgba(255,255,255,0.60) !important;
+  backdrop-filter:blur(18px) saturate(1.5) !important;
+  -webkit-backdrop-filter:blur(18px) saturate(1.5) !important;
+  border:1.5px solid rgba(210,165,93,0.18) !important;
+  box-shadow:0 8px 32px rgba(106,0,0,0.08),0 1.5px 0 rgba(255,255,255,0.85) inset !important;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,border-color .25s !important;
+}
+.card:hover,
+.model-card:hover,
+.step:hover,
+.service-card:hover,
+.feature-card:hover,
+.program-card:hover,
+.team-card:hover,
+.result-card:hover{
+  transform:translateY(-8px) scale(1.02) !important;
+  box-shadow:var(--depth),var(--neon-gold) !important;
+  border-color:rgba(210,165,93,0.45) !important;
+}
+
+/* model-card border-top saxla */
+.model-card{border-top:4px solid var(--bordo) !important;}
+.model-card.m2{border-top:4px solid var(--teal) !important;}
+
+/* ── GLASS MODAL ── */
+.modal,
+.modal-box,
+[class*="modal-"]{
+  background:rgba(255,255,255,0.82) !important;
+  backdrop-filter:blur(32px) saturate(1.9) !important;
+  -webkit-backdrop-filter:blur(32px) saturate(1.9) !important;
+  border:1.5px solid rgba(210,165,93,0.22) !important;
+  box-shadow:0 32px 80px rgba(58,0,0,0.22),0 2px 0 rgba(255,255,255,0.9) inset !important;
+}
+
+/* Modal overlay glass */
+.overlay,.modal-overlay{
+  backdrop-filter:blur(8px) saturate(1.2) !important;
+  -webkit-backdrop-filter:blur(8px) saturate(1.2) !important;
+  background:rgba(20,0,0,0.55) !important;
+}
+
+/* ── GLASS FORM INPUTS ── */
+input,textarea,select{
+  background:rgba(255,255,255,0.72) !important;
+  backdrop-filter:blur(8px) !important;
+  -webkit-backdrop-filter:blur(8px) !important;
+  border:1.5px solid rgba(210,165,93,0.22) !important;
+  transition:border-color .2s,box-shadow .2s,background .2s !important;
+}
+input:focus,textarea:focus,select:focus{
+  background:rgba(255,255,255,0.95) !important;
+  border-color:var(--gold) !important;
+  box-shadow:0 0 0 4px rgba(210,165,93,0.16),0 4px 16px rgba(210,165,93,0.10) !important;
+  outline:none !important;
+}
+
+/* ── BUTTONS ENHANCED ── */
+button[class*="btn"],
+.btn,
+[class*="-btn"],
+button.submit,
+button[type="submit"]{
+  transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s !important;
+}
+button[class*="btn"]:hover,
+.btn:hover{
+  transform:translateY(-3px) scale(1.03) !important;
+}
+
+/* ── GOLD LINE SHIMMER ── */
+.gold-line,.divider,[class*="gold-line"]{
+  background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold)) !important;
+  background-size:200% !important;
+  animation:shimmer 2.8s ease infinite !important;
+}
+@keyframes shimmer{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* ── REVEAL ENHANCED ── */
+.reveal{
+  opacity:0 !important;
+  transform:translateY(26px) scale(0.98) !important;
+  transition:opacity .72s cubic-bezier(.22,1,.36,1),transform .72s cubic-bezier(.22,1,.36,1) !important;
+}
+.reveal.visible{
+  opacity:1 !important;
+  transform:translateY(0) scale(1) !important;
+}
+
+/* ── KIT BOX GLASS ── */
+.kit-box{
+  background:linear-gradient(135deg,rgba(255,251,248,0.75),rgba(254,243,232,0.65)) !important;
+  backdrop-filter:blur(20px) saturate(1.5) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(1.5) !important;
+  border:1.5px solid rgba(210,165,93,0.28) !important;
+  box-shadow:0 12px 40px rgba(210,165,93,0.15),0 2px 0 rgba(255,255,255,0.8) inset !important;
+}
+
+/* ── FAQ GLASS ── */
+.faq-item{
+  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s !important;
+}
+.faq-item:hover{
+  transform:translateY(-4px) !important;
+  box-shadow:0 12px 36px rgba(106,0,0,0.10),var(--neon-gold) !important;
+}
+
+/* ── CONTACT CARDS ── */
+.contact-card:hover{
+  transform:translateY(-6px) scale(1.02) !important;
+  box-shadow:var(--depth) !important;
+}
+
+/* ── FOOTER GLASS TOP LINE ── */
+footer{
+  position:relative;
+}
+footer::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1.5px;
+  background:linear-gradient(90deg,transparent,rgba(210,165,93,0.5),transparent);
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:rgba(240,210,160,0.15);border-radius:5px}
+::-webkit-scrollbar-thumb{background:rgba(210,165,93,0.45);border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:rgba(210,165,93,0.7)}
+
+/* ── STAGGER ANIMATIONS ── */
+.models .model-card:nth-child(1){transition-delay:.05s}
+.models .model-card:nth-child(2){transition-delay:.12s}
+
 </style>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a3a6b">
@@ -734,6 +953,52 @@ footer a:hover{text-decoration:underline}
     if(e.ctrlKey&&e.shiftKey&&(e.keyCode===73||e.keyCode===74||e.keyCode===67)) e.preventDefault();
   });
 })();
+</script>
+
+<script>
+
+/* ── PARALLAX + SCROLL MAGIC ── */
+(function(){
+  var hero = document.querySelector('.hero');
+  var heroBefore = hero; // bg parallax üçün
+
+  // Parallax scroll handler
+  function proMaxScroll(){
+    var sy = window.scrollY;
+
+    // Hero parallax
+    if(hero){
+      var heroBg = hero.querySelector('img') || null;
+      hero.style.backgroundPosition = '50% calc(50% + ' + (sy * 0.35) + 'px)';
+    }
+
+    // Parallax bands
+    document.querySelectorAll('.parallax-band').forEach(function(band){
+      var rect = band.getBoundingClientRect();
+      var offset = (window.innerHeight/2 - rect.top - rect.height/2) * 0.3;
+      var bgEl = band.querySelector('.parallax-band-bg');
+      if(bgEl) bgEl.style.transform = 'translateY(' + offset + 'px)';
+      else band.style.backgroundPositionY = 'calc(50% + ' + offset + 'px)';
+    });
+
+    // Reveal on scroll
+    document.querySelectorAll('.reveal').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight - 55) el.classList.add('visible');
+    });
+
+    // Header scroll class
+    var header = document.querySelector('header');
+    if(header){
+      if(sy > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', proMaxScroll, {passive:true});
+  setTimeout(proMaxScroll, 120);
+})();
+
 </script>
 </body>
 </html>
