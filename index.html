@@ -405,7 +405,6 @@ header{
 .card,
 .model-card,
 .step,
-.kit-box,
 .stat-card,
 .service-card,
 .faq-item,
@@ -555,6 +554,21 @@ footer::before{
 /* ── STAGGER ANIMATIONS ── */
 .models .model-card:nth-child(1){transition-delay:.05s}
 .models .model-card:nth-child(2){transition-delay:.12s}
+
+
+/* ── KIT-BOX: tünd fon saxla, yalnız blur ── */
+.kit-box{
+  backdrop-filter:blur(12px) saturate(1.4) !important;
+  -webkit-backdrop-filter:blur(12px) saturate(1.4) !important;
+  box-shadow:0 12px 40px rgba(58,0,0,0.25),0 2px 0 rgba(255,255,255,0.08) inset !important;
+  border:1px solid rgba(210,165,93,0.2) !important;
+  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s !important;
+}
+.kit-box:hover{
+  transform:translateY(-4px) !important;
+  box-shadow:0 20px 56px rgba(58,0,0,0.32) !important;
+}
+.kit-box:hover ~ * { } /* heç nə */
 
 </style>
     <link rel="manifest" href="manifest.json">
