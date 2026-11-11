@@ -617,7 +617,7 @@ footer::before{
   <div class="nav-actions">
     <a href="tel:+994554157215" class="nav-phone"><i class="fas fa-phone"></i> +994 55 415 72 15</a>
     <a href="https://www.instagram.com/an_psixologiyamerkezi?igsh=aTQ4NHNoMzlnc3dz" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <button class="nav-admin" id="adminOpenBtn"><i class="fas fa-lock"></i> Admin</button>
+    
   </div>
 </header>
 
@@ -891,7 +891,14 @@ footer::before{
   function openModal(){ modal.classList.add("open"); }
   function closeModal(){ modal.classList.remove("open"); loginView.style.display="block"; panelView.style.display="none";
     document.getElementById("a-user").value=""; document.getElementById("a-pass").value=""; document.getElementById("loginError").classList.remove("show"); }
-  document.getElementById("adminOpenBtn").addEventListener("click",openModal);
+  (function(){
+    var brand=document.querySelector("header .brand"),n=0,t=0;
+    brand.addEventListener("click",function(e){
+      var now=Date.now();
+      n=(now-t<1500)?n+1:1; t=now;
+      if(n>=5){ n=0; e.preventDefault(); openModal(); }
+    });
+  })();
   document.getElementById("adminCloseBtn").addEventListener("click",closeModal);
   modal.addEventListener("click",function(e){ if(e.target===modal) closeModal(); });
 
