@@ -864,7 +864,9 @@ footer::before{
     e.preventDefault();
     var msgs=load(MSG_KEY);
     msgs.unshift({id:Date.now(),name:m_name.value.trim(),phone:m_phone.value.trim(),text:m_text.value.trim(),date:nowStr(),read:false,reply:""});
-    save(MSG_KEY,msgs); messageForm.reset();
+    save(MSG_KEY,msgs);
+    if(window.sgTrackEvent) sgTrackEvent("lead",{site:"an-merkezi",kind:"mesaj",name:msgs[0].name,phone:msgs[0].phone,text:msgs[0].text.slice(0,300)});
+    messageForm.reset();
     var ok=document.getElementById("messageFormMsg"); ok.classList.add("ok");
     setTimeout(function(){ok.classList.remove("ok");},5000);
   });
@@ -880,7 +882,9 @@ footer::before{
       phone:document.getElementById("r-phone").value.trim(),
       program:document.getElementById("r-program").value,
       date:nowStr(),read:false});
-    save(REG_KEY,regs); registerForm.reset();
+    save(REG_KEY,regs);
+    if(window.sgTrackEvent) sgTrackEvent("lead",{site:"an-merkezi",kind:"muraciet",parent:regs[0].parent,age:regs[0].age,phone:regs[0].phone,program:regs[0].program});
+    registerForm.reset();
     var ok=document.getElementById("registerFormMsg"); ok.classList.add("ok");
     setTimeout(function(){ok.classList.remove("ok");},5000);
   });
